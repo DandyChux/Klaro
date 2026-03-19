@@ -1,4 +1,4 @@
-use calamine::{open_workbook, Reader, Xls, Xlsx};
+use calamine::{Reader, Xls, Xlsx, open_workbook};
 use serde::{Deserialize, Serialize};
 use std::fmt;
 use std::io::Cursor;

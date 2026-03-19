@@ -2,59 +2,56 @@
 	"build": {
 		"beforeDevCommand": "bun run dev",
 		"beforeBuildCommand": "bun run build",
-		"devPath": "http://localhost:1420",
-		"distDir": "../dist"
+		"frontendDist": "../dist",
+		"devUrl": "http://localhost:1420"
 	},
-	"package": {
-		"productName": "rusty-scrubber",
-		"version": "0.1.0"
+	"bundle": {
+		"active": true,
+		"targets": "all",
+		"resources": [
+			"resources/models/**/*"
+		],
+		"icon": [
+			"icons/32x32.png",
+			"icons/128x128.png",
+			"icons/128x128@2x.png",
+			"icons/icon.icns",
+			"icons/icon.ico"
+		],
+		"category": "Utility",
+		"shortDescription": "Privacy-focused data scrubber",
+		"longDescription": "Remove, mask, hash, or fake PII in your CSV, Excel, and text files. All processing happens locally.",
+		"macOS": {
+			"entitlements": null,
+			"exceptionDomain": null,
+			"frameworks": [],
+			"minimumSystemVersion": "10.15",
+			"signingIdentity": null
+		},
+		"windows": {
+			"certificateThumbprint": null,
+			"digestAlgorithm": "sha256",
+			"timestampUrl": ""
+		}
 	},
-	"tauri": {
-		"allowlist": {
-			"all": false,
-			"shell": {
-				"all": false,
-				"open": true
-			},
-			"dialog": {
-				"all": true,
-				"open": true,
-				"save": true
-			},
-			"fs": {
-				"all": true,
-				"readFile": true,
-				"writeFile": true,
-				"scope": [
-					"**"
-				]
-			}
-		},
-		"bundle": {
-			"active": true,
-			"targets": "all",
-			"identifier": "com.dandychux.rusty-scrubber",
-			"icon": [
-				"icons/32x32.png",
-				"icons/128x128.png",
-				"icons/128x128@2x.png",
-				"icons/icon.icns",
-				"icons/icon.ico"
-			]
-		},
-		"security": {
-			"csp": null
-		},
+	"productName": "Klaro",
+	"mainBinaryName": "klaro",
+	"version": "1.0.0",
+	"identifier": "com.dandychux.klaro",
+	"app": {
 		"windows": [
 			{
 				"fullscreen": false,
 				"resizable": true,
-				"title": "Rusty Scrubber - Privacy Data Scrubber",
+				"title": "Klaro - Privacy Data Scrubber",
 				"width": 1000,
 				"height": 750,
 				"minWidth": 800,
 				"minHeight": 600
 			}
-		]
+		],
+		"security": {
+			"csp": null
+		}
 	}
 }

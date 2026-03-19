@@ -141,7 +141,7 @@
 	</Card.Root>
 
 	<!-- File Results -->
-	{#if results.length > 1}
+	{#if results.length > 0}
 		<Tabs.Root value={results[0].file_name}>
 			<Tabs.List class="w-full justify-start overflow-x-auto">
 				{#each results as result, i}

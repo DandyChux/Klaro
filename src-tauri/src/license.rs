@@ -14,19 +14,22 @@ pub struct VersionLimits {
 }
 
 impl VersionLimits {
-    #[cfg(feature = "lite")]
     pub fn current() -> Self {
-        Self::lite()
-    }
+        #[cfg(feature = "pro")]
+        {
+            return Self::pro();
+        }
 
-    #[cfg(feature = "pro")]
-    pub fn current() -> Self {
-        Self::pro()
-    }
+        #[cfg(feature = "lite")]
+        {
+            return Self::lite();
+        }
 
-    #[cfg(not(any(feature = "lite", feature = "pro")))]
-    pub fn current() -> Self {
-        Self::lite() // Default to lite if no feature specified
+        // Fallback (SHOULD NOT HAPPEN)
+        #[cfg(not(any(feature = "lite", feature = "pro")))]
+        {
+            return Self::lite();
+        }
     }
 
     pub fn lite() -> Self {
@@ -43,7 +46,7 @@ impl VersionLimits {
             ]),
             allows_batch_download: false,
             allows_xlsx_export: false,
-            version_name: "Rusty Scrubber Lite".to_string(),
+            version_name: "Klaro Lite".to_string(),
             is_trial: true,
         }
     }
@@ -57,7 +60,7 @@ impl VersionLimits {
             allowed_pii_types: None,   // All types
             allows_batch_download: true,
             allows_xlsx_export: true,
-            version_name: "Rusty Scrubber Pro".to_string(),
+            version_name: "Klaro Pro".to_string(),
             is_trial: false,
         }
     }

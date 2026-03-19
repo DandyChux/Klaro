@@ -30,7 +30,7 @@
 					</svg>
 				</div>
 				<div>
-					<h1 class="text-xl font-bold">Rusty Scrubber</h1>
+					<h1 class="text-xl font-bold">Klaro</h1>
 					<p class="text-sm text-muted-foreground">
 						Privacy-focused data scrubber
 					</p>

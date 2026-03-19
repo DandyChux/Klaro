@@ -23,7 +23,7 @@
 		data: string;
 	}
 
-	let isDragging = false;
+	let isDragging = $state(false);
 	let fileInput: HTMLInputElement;
 
 	function handleDragOver(e: DragEvent) {

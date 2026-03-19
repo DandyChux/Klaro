@@ -1,9 +1,9 @@
 use crate::pii_detector::{PiiMatch, PiiType};
+use fake::Fake;
 use fake::faker::address::en::*;
 use fake::faker::internet::en::*;
 use fake::faker::name::en::*;
 use fake::faker::phone_number::en::*;
-use fake::Fake;
 use rand::Rng;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -123,6 +123,7 @@ impl Scrubber {
             }
             PiiType::IPAddress => "***.***.***.***".to_string(),
             PiiType::DateOfBirth => "**/**/****".to_string(),
+            PiiType::Organization => fake::faker::company::en::CompanyName().fake(),
             _ => "*".repeat(original.len().min(20)),
         }
     }
@@ -179,6 +180,7 @@ impl Scrubber {
             PiiType::BankAccount => {
                 format!("{:012}", rng.random_range(100000000000u64..999999999999u64))
             }
+            PiiType::Organization => fake::faker::company::en::CompanyName().fake(),
         }
     }
 }
