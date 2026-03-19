@@ -61,6 +61,10 @@ jobs:
             - name: Install frontend dependencies
               run: bun install
 
+            - name: Download NER model files
+              shell: bash
+              run: chmod +x download_model.sh && ./download_model.sh
+
             - name: Build Pro
               uses: tauri-apps/tauri-action@v0
               env:
@@ -114,13 +118,17 @@ jobs:
             - name: Install frontend dependencies
               run: bun install
 
+            - name: Download NER model files
+              shell: bash
+              run: chmod +x download_model.sh && ./download_model.sh
+
             - name: Build Lite
               uses: tauri-apps/tauri-action@v0
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   tagName: v__VERSION__-lite
-                  releaseName: "Rusty Scubber Lite v__VERSION__"
+                  releaseName: "Klaro Lite v__VERSION__"
                   releaseBody: "Lite version with limited features."
                   releaseDraft: true
                   prerelease: false
